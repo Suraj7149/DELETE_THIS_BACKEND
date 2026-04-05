@@ -1,0 +1,154 @@
+
+> backend@0.0.1 start
+> nest start
+
+[32m[Nest] 71099  - [39m04/03/2026, 5:23:09 PM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 71099  - [39m04/03/2026, 5:23:09 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +8ms[39m
+[32m[Nest] 71099  - [39m04/03/2026, 5:23:09 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 71099  - [39m04/03/2026, 5:23:09 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 71099  - [39m04/03/2026, 5:23:09 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 71099  - [39m04/03/2026, 5:23:09 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+[31m[Nest] 71099  - [39m04/03/2026, 5:23:09 PM [31m  ERROR[39m [38;5;3m[TypeOrmModule] [39m[31mUnable to connect to the database. Retrying (1)...[39m
+QueryFailedError: You can't delete all columns with ALTER TABLE; use DROP TABLE instead
+    at Query.onResult (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/typeorm/driver/src/driver/mysql/MysqlQueryRunner.ts:248:33)
+    at Query.execute (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/commands/command.js:36:14)
+    at PoolConnection.handlePacket (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/base/connection.js:552:34)
+    at PacketParser.onPacket (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/base/connection.js:102:12)
+    at PacketParser.executeStart (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/packet_parser.js:75:16)
+    at Socket.<anonymous> (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/base/connection.js:109:25)
+    at Socket.emit (node:events:524:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+[31m[Nest] 71099  - [39m04/03/2026, 5:23:12 PM [31m  ERROR[39m [38;5;3m[TypeOrmModule] [39m[31mUnable to connect to the database. Retrying (2)...[39m
+QueryFailedError: You can't delete all columns with ALTER TABLE; use DROP TABLE instead
+    at Query.onResult (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/typeorm/driver/src/driver/mysql/MysqlQueryRunner.ts:248:33)
+    at Query.execute (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/commands/command.js:36:14)
+    at PoolConnection.handlePacket (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/base/connection.js:552:34)
+    at PacketParser.onPacket (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/base/connection.js:102:12)
+    at PacketParser.executeStart (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/packet_parser.js:75:16)
+    at Socket.<anonymous> (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/base/connection.js:109:25)
+    at Socket.emit (node:events:524:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+[31m[Nest] 71099  - [39m04/03/2026, 5:23:15 PM [31m  ERROR[39m [38;5;3m[TypeOrmModule] [39m[31mUnable to connect to the database. Retrying (3)...[39m
+QueryFailedError: You can't delete all columns with ALTER TABLE; use DROP TABLE instead
+    at Query.onResult (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/typeorm/driver/src/driver/mysql/MysqlQueryRunner.ts:248:33)
+    at Query.execute (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/commands/command.js:36:14)
+    at PoolConnection.handlePacket (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/base/connection.js:552:34)
+    at PacketParser.onPacket (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/base/connection.js:102:12)
+    at PacketParser.executeStart (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/packet_parser.js:75:16)
+    at Socket.<anonymous> (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/base/connection.js:109:25)
+    at Socket.emit (node:events:524:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+[31m[Nest] 71099  - [39m04/03/2026, 5:23:18 PM [31m  ERROR[39m [38;5;3m[TypeOrmModule] [39m[31mUnable to connect to the database. Retrying (4)...[39m
+QueryFailedError: You can't delete all columns with ALTER TABLE; use DROP TABLE instead
+    at Query.onResult (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/typeorm/driver/src/driver/mysql/MysqlQueryRunner.ts:248:33)
+    at Query.execute (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/commands/command.js:36:14)
+    at PoolConnection.handlePacket (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/base/connection.js:552:34)
+    at PacketParser.onPacket (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/base/connection.js:102:12)
+    at PacketParser.executeStart (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/packet_parser.js:75:16)
+    at Socket.<anonymous> (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/base/connection.js:109:25)
+    at Socket.emit (node:events:524:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+[31m[Nest] 71099  - [39m04/03/2026, 5:23:21 PM [31m  ERROR[39m [38;5;3m[TypeOrmModule] [39m[31mUnable to connect to the database. Retrying (5)...[39m
+QueryFailedError: You can't delete all columns with ALTER TABLE; use DROP TABLE instead
+    at Query.onResult (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/typeorm/driver/src/driver/mysql/MysqlQueryRunner.ts:248:33)
+    at Query.execute (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/commands/command.js:36:14)
+    at PoolConnection.handlePacket (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/base/connection.js:552:34)
+    at PacketParser.onPacket (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/base/connection.js:102:12)
+    at PacketParser.executeStart (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/packet_parser.js:75:16)
+    at Socket.<anonymous> (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/base/connection.js:109:25)
+    at Socket.emit (node:events:524:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+[31m[Nest] 71099  - [39m04/03/2026, 5:23:24 PM [31m  ERROR[39m [38;5;3m[TypeOrmModule] [39m[31mUnable to connect to the database. Retrying (6)...[39m
+QueryFailedError: You can't delete all columns with ALTER TABLE; use DROP TABLE instead
+    at Query.onResult (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/typeorm/driver/src/driver/mysql/MysqlQueryRunner.ts:248:33)
+    at Query.execute (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/commands/command.js:36:14)
+    at PoolConnection.handlePacket (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/base/connection.js:552:34)
+    at PacketParser.onPacket (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/base/connection.js:102:12)
+    at PacketParser.executeStart (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/packet_parser.js:75:16)
+    at Socket.<anonymous> (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/base/connection.js:109:25)
+    at Socket.emit (node:events:524:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+[31m[Nest] 71099  - [39m04/03/2026, 5:23:27 PM [31m  ERROR[39m [38;5;3m[TypeOrmModule] [39m[31mUnable to connect to the database. Retrying (7)...[39m
+QueryFailedError: You can't delete all columns with ALTER TABLE; use DROP TABLE instead
+    at Query.onResult (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/typeorm/driver/src/driver/mysql/MysqlQueryRunner.ts:248:33)
+    at Query.execute (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/commands/command.js:36:14)
+    at PoolConnection.handlePacket (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/base/connection.js:552:34)
+    at PacketParser.onPacket (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/base/connection.js:102:12)
+    at PacketParser.executeStart (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/packet_parser.js:75:16)
+    at Socket.<anonymous> (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/base/connection.js:109:25)
+    at Socket.emit (node:events:524:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+[31m[Nest] 71099  - [39m04/03/2026, 5:23:30 PM [31m  ERROR[39m [38;5;3m[TypeOrmModule] [39m[31mUnable to connect to the database. Retrying (8)...[39m
+QueryFailedError: You can't delete all columns with ALTER TABLE; use DROP TABLE instead
+    at Query.onResult (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/typeorm/driver/src/driver/mysql/MysqlQueryRunner.ts:248:33)
+    at Query.execute (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/commands/command.js:36:14)
+    at PoolConnection.handlePacket (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/base/connection.js:552:34)
+    at PacketParser.onPacket (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/base/connection.js:102:12)
+    at PacketParser.executeStart (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/packet_parser.js:75:16)
+    at Socket.<anonymous> (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/base/connection.js:109:25)
+    at Socket.emit (node:events:524:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+[31m[Nest] 71099  - [39m04/03/2026, 5:23:33 PM [31m  ERROR[39m [38;5;3m[TypeOrmModule] [39m[31mUnable to connect to the database. Retrying (9)...[39m
+QueryFailedError: You can't delete all columns with ALTER TABLE; use DROP TABLE instead
+    at Query.onResult (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/typeorm/driver/src/driver/mysql/MysqlQueryRunner.ts:248:33)
+    at Query.execute (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/commands/command.js:36:14)
+    at PoolConnection.handlePacket (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/base/connection.js:552:34)
+    at PacketParser.onPacket (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/base/connection.js:102:12)
+    at PacketParser.executeStart (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/packet_parser.js:75:16)
+    at Socket.<anonymous> (/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/node_modules/mysql2/lib/base/connection.js:109:25)
+    at Socket.emit (node:events:524:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+[31m[Nest] 71099  - [39m04/03/2026, 5:23:33 PM [31m  ERROR[39m [38;5;3m[ExceptionHandler] [39mQueryFailedError: You can't delete all columns with ALTER TABLE; use DROP TABLE instead
+    at Query.onResult [90m(/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/[39mnode_modules/[4mtypeorm[24m/driver/src/driver/mysql/MysqlQueryRunner.ts:248:33[90m)[39m
+    at Query.execute [90m(/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/[39mnode_modules/[4mmysql2[24m/lib/commands/command.js:36:14[90m)[39m
+    at PoolConnection.handlePacket [90m(/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/[39mnode_modules/[4mmysql2[24m/lib/base/connection.js:552:34[90m)[39m
+    at PacketParser.onPacket [90m(/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/[39mnode_modules/[4mmysql2[24m/lib/base/connection.js:102:12[90m)[39m
+    at PacketParser.executeStart [90m(/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/[39mnode_modules/[4mmysql2[24m/lib/packet_parser.js:75:16[90m)[39m
+    at Socket.<anonymous> [90m(/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/[39mnode_modules/[4mmysql2[24m/lib/base/connection.js:109:25[90m)[39m
+[90m    at Socket.emit (node:events:524:28)[39m
+[90m    at addChunk (node:internal/streams/readable:561:12)[39m
+[90m    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)[39m
+[90m    at Readable.push (node:internal/streams/readable:392:5)[39m {
+  query: [32m'ALTER TABLE `cars` DROP COLUMN `isAvailable`'[39m,
+  parameters: [90mundefined[39m,
+  driverError: Error: You can't delete all columns with ALTER TABLE; use DROP TABLE instead
+      at Packet.asError [90m(/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/[39mnode_modules/[4mmysql2[24m/lib/packets/packet.js:788:17[90m)[39m
+      at Query.execute [90m(/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/[39mnode_modules/[4mmysql2[24m/lib/commands/command.js:29:26[90m)[39m
+      at PoolConnection.handlePacket [90m(/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/[39mnode_modules/[4mmysql2[24m/lib/base/connection.js:552:34[90m)[39m
+      at PacketParser.onPacket [90m(/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/[39mnode_modules/[4mmysql2[24m/lib/base/connection.js:102:12[90m)[39m
+      at PacketParser.executeStart [90m(/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/[39mnode_modules/[4mmysql2[24m/lib/packet_parser.js:75:16[90m)[39m
+      at Socket.<anonymous> [90m(/home/suraj/Documents/BKM - work/Project_16_car_rental/Current_Project/backend/[39mnode_modules/[4mmysql2[24m/lib/base/connection.js:109:25[90m)[39m
+  [90m    at Socket.emit (node:events:524:28)[39m
+  [90m    at addChunk (node:internal/streams/readable:561:12)[39m
+  [90m    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)[39m
+  [90m    at Readable.push (node:internal/streams/readable:392:5)[39m {
+    code: [32m'ER_CANT_REMOVE_ALL_FIELDS'[39m,
+    errno: [33m1090[39m,
+    sqlState: [32m'42000'[39m,
+    sqlMessage: [32m"You can't delete all columns with ALTER TABLE; use DROP TABLE instead"[39m,
+    sql: [32m'ALTER TABLE `cars` DROP COLUMN `isAvailable`'[39m
+  },
+  code: [32m'ER_CANT_REMOVE_ALL_FIELDS'[39m,
+  errno: [33m1090[39m,
+  sqlState: [32m'42000'[39m,
+  sqlMessage: [32m"You can't delete all columns with ALTER TABLE; use DROP TABLE instead"[39m,
+  sql: [32m'ALTER TABLE `cars` DROP COLUMN `isAvailable`'[39m
+}
