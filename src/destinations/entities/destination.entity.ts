@@ -12,20 +12,23 @@ export class Destination {
   country_name: string;
 
   @Column()
-  image: string;
+  destination_region: string;
+
+  @Column()
+  image_path: string;
 
   @Column()
   deals: number;
 
   @Column('float')
-  rating: number;
+  ratings: number;
 
   @Column()
-  reviews: number;
+  review: number;
 
   @Column()
-  pricing: number;
+  price: number;
 
   @Column()
-  viewing: number;
+  total_viewing: number;
 }

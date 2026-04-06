@@ -15,12 +15,13 @@ let Destination = class Destination {
     destinations_id;
     destination_name;
     country_name;
-    image;
+    destination_region;
+    image_path;
     deals;
-    rating;
-    reviews;
-    pricing;
-    viewing;
+    ratings;
+    review;
+    price;
+    total_viewing;
 };
 exports.Destination = Destination;
 __decorate([
@@ -38,7 +39,11 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], Destination.prototype, "image", void 0);
+], Destination.prototype, "destination_region", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Destination.prototype, "image_path", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
@@ -46,19 +51,19 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)('float'),
     __metadata("design:type", Number)
-], Destination.prototype, "rating", void 0);
+], Destination.prototype, "ratings", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
-], Destination.prototype, "reviews", void 0);
+], Destination.prototype, "review", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
-], Destination.prototype, "pricing", void 0);
+], Destination.prototype, "price", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
-], Destination.prototype, "viewing", void 0);
+], Destination.prototype, "total_viewing", void 0);
 exports.Destination = Destination = __decorate([
     (0, typeorm_1.Entity)('destinations')
 ], Destination);

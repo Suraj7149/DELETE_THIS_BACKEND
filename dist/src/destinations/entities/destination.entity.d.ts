@@ -2,10 +2,11 @@ export declare class Destination {
     destinations_id: number;
     destination_name: string;
     country_name: string;
-    image: string;
+    destination_region: string;
+    image_path: string;
     deals: number;
-    rating: number;
-    reviews: number;
-    pricing: number;
-    viewing: number;
+    ratings: number;
+    review: number;
+    price: number;
+    total_viewing: number;
 }

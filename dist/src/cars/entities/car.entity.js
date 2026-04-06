@@ -30,6 +30,14 @@ let Car = class Car {
     isTodaysSpecial;
     supplier;
     availablePickupLocation;
+    brand;
+    yearModel;
+    fuelType;
+    years;
+    control;
+    wheels;
+    sellingPrice;
+    ownership;
 };
 exports.Car = Car;
 __decorate([
@@ -104,6 +112,38 @@ __decorate([
     (0, typeorm_1.Column)({ name: 'available_pickup_location', type: 'text', nullable: true }),
     __metadata("design:type", String)
 ], Car.prototype, "availablePickupLocation", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", String)
+], Car.prototype, "brand", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'year_model', nullable: true }),
+    __metadata("design:type", String)
+], Car.prototype, "yearModel", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'fuel_type', nullable: true }),
+    __metadata("design:type", String)
+], Car.prototype, "fuelType", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", String)
+], Car.prototype, "years", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", String)
+], Car.prototype, "control", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", String)
+], Car.prototype, "wheels", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'selling_price', type: 'decimal', precision: 12, scale: 2, nullable: true }),
+    __metadata("design:type", Number)
+], Car.prototype, "sellingPrice", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ default: 'new' }),
+    __metadata("design:type", String)
+], Car.prototype, "ownership", void 0);
 exports.Car = Car = __decorate([
     (0, typeorm_1.Entity)('cars')
 ], Car);

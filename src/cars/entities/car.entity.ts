@@ -55,4 +55,28 @@ export class Car {
 
   @Column({ name: 'available_pickup_location', type: 'text', nullable: true })
   availablePickupLocation: string; // Comma separated for now
+
+  @Column({ nullable: true })
+  brand: string;
+
+  @Column({ name: 'year_model', nullable: true })
+  yearModel: string;
+
+  @Column({ name: 'fuel_type', nullable: true })
+  fuelType: string;
+
+  @Column({ nullable: true })
+  years: string;
+
+  @Column({ nullable: true })
+  control: string;
+
+  @Column({ nullable: true })
+  wheels: string;
+
+  @Column({ name: 'selling_price', type: 'decimal', precision: 12, scale: 2, nullable: true })
+  sellingPrice: number;
+
+  @Column({ default: 'new' })
+  ownership: string; // 'new' or 'used'
 }

@@ -17,4 +17,12 @@ export declare class Car {
     isTodaysSpecial: boolean;
     supplier: string;
     availablePickupLocation: string;
+    brand: string;
+    yearModel: string;
+    fuelType: string;
+    years: string;
+    control: string;
+    wheels: string;
+    sellingPrice: number;
+    ownership: string;
 }

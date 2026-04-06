@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Query } from '@nestjs/common';
 import { CarsService } from './cars.service';
 
 @Controller('cars')
@@ -6,8 +6,12 @@ export class CarsController {
   constructor(private readonly carsService: CarsService) {}
 
   @Get()
-  findAll() {
-    return this.carsService.findAll();
+  findAll(
+    @Query('page') page: number = 1,
+    @Query('limit') limit: number = 8,
+    @Query('brand') brand?: string,
+  ) {
+    return this.carsService.findAll(+page, +limit, brand);
   }
 
   @Get(':id')
