@@ -3,15 +3,15 @@ import { CarsService } from './cars.service';
 
 @Controller('cars')
 export class CarsController {
-  constructor(private readonly carsService: CarsService) {}
+  constructor(private readonly carsService: CarsService) { }
 
   @Get()
   findAll(
     @Query('page') page: number = 1,
     @Query('limit') limit: number = 8,
-    @Query('brand') brand?: string,
+    @Query('search') search?: string,
   ) {
-    return this.carsService.findAll(+page, +limit, brand);
+    return this.carsService.findAll(+page, +limit, search);
   }
 
   @Get(':id')

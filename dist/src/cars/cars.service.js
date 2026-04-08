@@ -314,10 +314,18 @@ let CarsService = class CarsService {
         }
         console.log('Database synchronization complete.');
     }
-    async findAll(page = 1, limit = 8, brand) {
-        const whereCondition = brand ? { brand } : {};
+    async findAll(page = 1, limit = 8, search) {
+        let whereCondition = {};
+        if (search) {
+            whereCondition = [
+                { brand: (0, typeorm_2.Like)(`%${search}%`) },
+                { name: (0, typeorm_2.Like)(`%${search}%`) },
+                { category: (0, typeorm_2.Like)(`%${search}%`) },
+            ];
+        }
         const [data, total] = await this.carsRepository.findAndCount({
             where: whereCondition,
+            order: { car_id: 'DESC' },
             skip: (page - 1) * limit,
             take: limit,
         });

@@ -20,8 +20,8 @@ let CarsController = class CarsController {
     constructor(carsService) {
         this.carsService = carsService;
     }
-    findAll(page = 1, limit = 8, brand) {
-        return this.carsService.findAll(+page, +limit, brand);
+    findAll(page = 1, limit = 8, search) {
+        return this.carsService.findAll(+page, +limit, search);
     }
     findOne(id) {
         return this.carsService.findOne(+id);
@@ -35,7 +35,7 @@ __decorate([
     (0, common_1.Get)(),
     __param(0, (0, common_1.Query)('page')),
     __param(1, (0, common_1.Query)('limit')),
-    __param(2, (0, common_1.Query)('brand')),
+    __param(2, (0, common_1.Query)('search')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, Number, String]),
     __metadata("design:returntype", void 0)

@@ -21,6 +21,7 @@ let SalesEnquiry = class SalesEnquiry {
     pickupDate;
     returnDate;
     selectedCar;
+    promoCode;
     car_id;
     enquiry_status;
     createdAt;
@@ -62,6 +63,10 @@ __decorate([
     (0, typeorm_1.Column)({ nullable: true }),
     __metadata("design:type", String)
 ], SalesEnquiry.prototype, "selectedCar", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", String)
+], SalesEnquiry.prototype, "promoCode", void 0);
 __decorate([
     (0, typeorm_1.Column)({ nullable: true }),
     __metadata("design:type", Number)

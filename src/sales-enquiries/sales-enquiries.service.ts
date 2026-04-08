@@ -16,7 +16,9 @@ export class SalesEnquiriesService {
   }
 
   findAll(): Promise<SalesEnquiry[]> {
-    return this.salesEnquiryRepository.find();
+    return this.salesEnquiryRepository.find({
+      order: { id: "DESC" }
+    });
   }
 
   async updateSelectedCar(id: number, selectedCar: string): Promise<SalesEnquiry | null> {

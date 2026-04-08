@@ -5,7 +5,7 @@ export declare class CarsService implements OnModuleInit {
     private carsRepository;
     constructor(carsRepository: Repository<Car>);
     onModuleInit(): Promise<void>;
-    findAll(page?: number, limit?: number, brand?: string): Promise<{
+    findAll(page?: number, limit?: number, search?: string): Promise<{
         data: Car[];
         total: number;
         page: number;

@@ -30,6 +30,9 @@ export class SalesEnquiry {
   selectedCar: string;
 
   @Column({ nullable: true })
+  promoCode: string;
+
+  @Column({ nullable: true })
   car_id: number;
 
   @Column({ default: 'unchecked' })

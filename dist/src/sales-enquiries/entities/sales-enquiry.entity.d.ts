@@ -8,6 +8,7 @@ export declare class SalesEnquiry {
     pickupDate: string;
     returnDate: string;
     selectedCar: string;
+    promoCode: string;
     car_id: number;
     enquiry_status: string;
     createdAt: Date;

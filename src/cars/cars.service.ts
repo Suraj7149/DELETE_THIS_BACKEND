@@ -1,6 +1,6 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, Like } from 'typeorm';
 import { Car } from './entities/car.entity';
 
 @Injectable()
@@ -13,7 +13,7 @@ export class CarsService implements OnModuleInit {
   async onModuleInit() {
     // Force update if needed or add missing cars
     const cars = await this.carsRepository.find();
-    
+
     const initialCars: Partial<Car>[] = [
       {
         name: "Toyota Yaris or similar",
@@ -307,10 +307,19 @@ export class CarsService implements OnModuleInit {
     console.log('Database synchronization complete.');
   }
 
-  async findAll(page: number = 1, limit: number = 8, brand?: string): Promise<{ data: Car[], total: number, page: number, lastPage: number }> {
-    const whereCondition = brand ? { brand } : {};
+  async findAll(page: number = 1, limit: number = 8, search?: string): Promise<{ data: Car[], total: number, page: number, lastPage: number }> {
+    let whereCondition: any = {};
+    if (search) {
+      whereCondition = [
+        { brand: Like(`%${search}%`) },
+        { name: Like(`%${search}%`) },
+        { category: Like(`%${search}%`) },
+      ];
+    }
+
     const [data, total] = await this.carsRepository.findAndCount({
       where: whereCondition,
+      order: { car_id: 'DESC' },
       skip: (page - 1) * limit,
       take: limit,
     });

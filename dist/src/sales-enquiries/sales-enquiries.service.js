@@ -27,7 +27,9 @@ let SalesEnquiriesService = class SalesEnquiriesService {
         return await this.salesEnquiryRepository.save(newEnquiry);
     }
     findAll() {
-        return this.salesEnquiryRepository.find();
+        return this.salesEnquiryRepository.find({
+            order: { id: "DESC" }
+        });
     }
     async updateSelectedCar(id, selectedCar) {
         await this.salesEnquiryRepository.update(id, { selectedCar });
