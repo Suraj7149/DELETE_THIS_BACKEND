@@ -343,6 +343,10 @@ let CarsService = class CarsService {
         const car = this.carsRepository.create(createCarDto);
         return this.carsRepository.save(car);
     }
+    async update(id, updateCarDto) {
+        await this.carsRepository.update(id, updateCarDto);
+        return this.findOne(id);
+    }
 };
 exports.CarsService = CarsService;
 exports.CarsService = CarsService = __decorate([

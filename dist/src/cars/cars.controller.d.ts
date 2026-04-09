@@ -15,4 +15,5 @@ export declare class CarsController {
         imageUrl: string;
     }>;
     create(createCarDto: any): Promise<import("./entities/car.entity").Car>;
+    update(id: string, updateCarDto: any): Promise<import("./entities/car.entity").Car | null>;
 }

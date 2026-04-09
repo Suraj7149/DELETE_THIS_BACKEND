@@ -40,6 +40,9 @@ let CarsController = class CarsController {
     create(createCarDto) {
         return this.carsService.create(createCarDto);
     }
+    update(id, updateCarDto) {
+        return this.carsService.update(+id, updateCarDto);
+    }
 };
 exports.CarsController = CarsController;
 __decorate([
@@ -73,6 +76,14 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], CarsController.prototype, "create", null);
+__decorate([
+    (0, common_1.Patch)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", void 0)
+], CarsController.prototype, "update", null);
 exports.CarsController = CarsController = __decorate([
     (0, common_1.Controller)('cars'),
     __metadata("design:paramtypes", [cars_service_1.CarsService,
