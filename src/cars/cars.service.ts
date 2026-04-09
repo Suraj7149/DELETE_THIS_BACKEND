@@ -339,4 +339,9 @@ export class CarsService implements OnModuleInit {
     const car = this.carsRepository.create(createCarDto);
     return this.carsRepository.save(car);
   }
+
+  async update(id: number, updateCarDto: Partial<Car>): Promise<Car | null> {
+    await this.carsRepository.update(id, updateCarDto);
+    return this.findOne(id);
+  }
 }

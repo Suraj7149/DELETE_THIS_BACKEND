@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param, Query, UseInterceptors, UploadedFile, BadRequestException } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Query, UseInterceptors, UploadedFile, BadRequestException, Patch } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { CarsService } from './cars.service';
 import { AwsS3Service } from './aws-s3.service';
@@ -37,5 +37,10 @@ export class CarsController {
   @Post()
   create(@Body() createCarDto: any) {
     return this.carsService.create(createCarDto);
+  }
+
+  @Patch(':id')
+  update(@Param('id') id: string, @Body() updateCarDto: any) {
+    return this.carsService.update(+id, updateCarDto);
   }
 }
