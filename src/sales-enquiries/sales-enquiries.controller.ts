@@ -16,11 +16,24 @@ export class SalesEnquiriesController {
     return this.salesEnquiriesService.findAll();
   }
 
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.salesEnquiriesService.findOne(+id);
+  }
+
   @Patch(':id/select-car')
   updateSelectedCar(
     @Param('id') id: string,
     @Body('selectedCar') selectedCar: string,
   ) {
     return this.salesEnquiriesService.updateSelectedCar(+id, selectedCar);
+  }
+
+  @Patch(':id/status')
+  updateStatus(
+    @Param('id') id: string,
+    @Body('status') status: string,
+  ) {
+    return this.salesEnquiriesService.updateStatus(+id, status);
   }
 }

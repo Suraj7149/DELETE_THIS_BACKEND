@@ -21,8 +21,17 @@ export class SalesEnquiriesService {
     });
   }
 
+  async findOne(id: number): Promise<SalesEnquiry | null> {
+    return this.salesEnquiryRepository.findOneBy({ id });
+  }
+
   async updateSelectedCar(id: number, selectedCar: string): Promise<SalesEnquiry | null> {
     await this.salesEnquiryRepository.update(id, { selectedCar });
+    return this.salesEnquiryRepository.findOneBy({ id });
+  }
+
+  async updateStatus(id: number, status: string): Promise<SalesEnquiry | null> {
+    await this.salesEnquiryRepository.update(id, { enquiry_status: status });
     return this.salesEnquiryRepository.findOneBy({ id });
   }
 }

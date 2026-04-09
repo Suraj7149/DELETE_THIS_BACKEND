@@ -16,6 +16,7 @@ let Car = class Car {
     name;
     image;
     category;
+    desc;
     specialTag;
     rating;
     reviews;
@@ -56,6 +57,10 @@ __decorate([
     (0, typeorm_1.Column)({ name: 'car_type' }),
     __metadata("design:type", String)
 ], Car.prototype, "category", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: 'text', nullable: true }),
+    __metadata("design:type", String)
+], Car.prototype, "desc", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: 'special_tag', nullable: true }),
     __metadata("design:type", String)

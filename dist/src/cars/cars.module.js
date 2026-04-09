@@ -12,6 +12,7 @@ const typeorm_1 = require("@nestjs/typeorm");
 const cars_service_1 = require("./cars.service");
 const cars_controller_1 = require("./cars.controller");
 const car_entity_1 = require("./entities/car.entity");
+const aws_s3_service_1 = require("./aws-s3.service");
 let CarsModule = class CarsModule {
 };
 exports.CarsModule = CarsModule;
@@ -19,7 +20,7 @@ exports.CarsModule = CarsModule = __decorate([
     (0, common_1.Module)({
         imports: [typeorm_1.TypeOrmModule.forFeature([car_entity_1.Car])],
         controllers: [cars_controller_1.CarsController],
-        providers: [cars_service_1.CarsService],
+        providers: [cars_service_1.CarsService, aws_s3_service_1.AwsS3Service],
     })
 ], CarsModule);
 //# sourceMappingURL=cars.module.js.map

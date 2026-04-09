@@ -14,6 +14,9 @@ export class Car {
   @Column({ name: 'car_type' })
   category: string; // Used for filters, e.g. ELECTRIC, SUV
 
+  @Column({ type: 'text', nullable: true })
+  desc: string;
+
   @Column({ name: 'special_tag', nullable: true })
   specialTag: string; // e.g. "Today's special offer!"
 

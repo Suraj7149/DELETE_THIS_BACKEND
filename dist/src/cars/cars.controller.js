@@ -14,17 +14,28 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CarsController = void 0;
 const common_1 = require("@nestjs/common");
+const platform_express_1 = require("@nestjs/platform-express");
 const cars_service_1 = require("./cars.service");
+const aws_s3_service_1 = require("./aws-s3.service");
 let CarsController = class CarsController {
     carsService;
-    constructor(carsService) {
+    awsS3Service;
+    constructor(carsService, awsS3Service) {
         this.carsService = carsService;
+        this.awsS3Service = awsS3Service;
     }
     findAll(page = 1, limit = 8, search) {
         return this.carsService.findAll(+page, +limit, search);
     }
     findOne(id) {
         return this.carsService.findOne(+id);
+    }
+    async uploadImage(file) {
+        if (!file) {
+            throw new common_1.BadRequestException('No image file provided');
+        }
+        const imageUrl = await this.awsS3Service.uploadFile(file);
+        return { imageUrl };
     }
     create(createCarDto) {
         return this.carsService.create(createCarDto);
@@ -48,6 +59,14 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], CarsController.prototype, "findOne", null);
 __decorate([
+    (0, common_1.Post)('upload'),
+    (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('image')),
+    __param(0, (0, common_1.UploadedFile)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], CarsController.prototype, "uploadImage", null);
+__decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -56,6 +75,7 @@ __decorate([
 ], CarsController.prototype, "create", null);
 exports.CarsController = CarsController = __decorate([
     (0, common_1.Controller)('cars'),
-    __metadata("design:paramtypes", [cars_service_1.CarsService])
+    __metadata("design:paramtypes", [cars_service_1.CarsService,
+        aws_s3_service_1.AwsS3Service])
 ], CarsController);
 //# sourceMappingURL=cars.controller.js.map

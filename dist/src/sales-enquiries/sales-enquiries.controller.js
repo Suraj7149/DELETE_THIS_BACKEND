@@ -26,8 +26,14 @@ let SalesEnquiriesController = class SalesEnquiriesController {
     findAll() {
         return this.salesEnquiriesService.findAll();
     }
+    findOne(id) {
+        return this.salesEnquiriesService.findOne(+id);
+    }
     updateSelectedCar(id, selectedCar) {
         return this.salesEnquiriesService.updateSelectedCar(+id, selectedCar);
+    }
+    updateStatus(id, status) {
+        return this.salesEnquiriesService.updateStatus(+id, status);
     }
 };
 exports.SalesEnquiriesController = SalesEnquiriesController;
@@ -45,6 +51,13 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], SalesEnquiriesController.prototype, "findAll", null);
 __decorate([
+    (0, common_1.Get)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], SalesEnquiriesController.prototype, "findOne", null);
+__decorate([
     (0, common_1.Patch)(':id/select-car'),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)('selectedCar')),
@@ -52,6 +65,14 @@ __decorate([
     __metadata("design:paramtypes", [String, String]),
     __metadata("design:returntype", void 0)
 ], SalesEnquiriesController.prototype, "updateSelectedCar", null);
+__decorate([
+    (0, common_1.Patch)(':id/status'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Body)('status')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, String]),
+    __metadata("design:returntype", void 0)
+], SalesEnquiriesController.prototype, "updateStatus", null);
 exports.SalesEnquiriesController = SalesEnquiriesController = __decorate([
     (0, common_1.Controller)('sales-enquiries'),
     __metadata("design:paramtypes", [sales_enquiries_service_1.SalesEnquiriesService])

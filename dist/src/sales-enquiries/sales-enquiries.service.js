@@ -31,8 +31,15 @@ let SalesEnquiriesService = class SalesEnquiriesService {
             order: { id: "DESC" }
         });
     }
+    async findOne(id) {
+        return this.salesEnquiryRepository.findOneBy({ id });
+    }
     async updateSelectedCar(id, selectedCar) {
         await this.salesEnquiryRepository.update(id, { selectedCar });
+        return this.salesEnquiryRepository.findOneBy({ id });
+    }
+    async updateStatus(id, status) {
+        await this.salesEnquiryRepository.update(id, { enquiry_status: status });
         return this.salesEnquiryRepository.findOneBy({ id });
     }
 };

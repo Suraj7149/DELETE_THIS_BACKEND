@@ -3,6 +3,7 @@ export declare class Car {
     name: string;
     image: string;
     category: string;
+    desc: string;
     specialTag: string;
     rating: number;
     reviews: number;

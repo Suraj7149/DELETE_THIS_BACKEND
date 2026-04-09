@@ -1,9 +1,14 @@
-import { Controller, Get, Post, Body, Param, Query } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Query, UseInterceptors, UploadedFile, BadRequestException } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
 import { CarsService } from './cars.service';
+import { AwsS3Service } from './aws-s3.service';
 
 @Controller('cars')
 export class CarsController {
-  constructor(private readonly carsService: CarsService) { }
+  constructor(
+    private readonly carsService: CarsService,
+    private readonly awsS3Service: AwsS3Service,
+  ) { }
 
   @Get()
   findAll(
@@ -17,6 +22,16 @@ export class CarsController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.carsService.findOne(+id);
+  }
+
+  @Post('upload')
+  @UseInterceptors(FileInterceptor('image'))
+  async uploadImage(@UploadedFile() file: Express.Multer.File) {
+    if (!file) {
+      throw new BadRequestException('No image file provided');
+    }
+    const imageUrl = await this.awsS3Service.uploadFile(file);
+    return { imageUrl };
   }
 
   @Post()
