@@ -6,6 +6,6 @@ export declare class SalesEnquiriesService {
     create(data: Partial<SalesEnquiry>): Promise<SalesEnquiry>;
     findAll(): Promise<SalesEnquiry[]>;
     findOne(id: number): Promise<SalesEnquiry | null>;
-    updateSelectedCar(id: number, selectedCar: string): Promise<SalesEnquiry | null>;
+    updateCarSelection(id: number, selectedCar: string, car_id: number): Promise<SalesEnquiry | null>;
     updateStatus(id: number, status: string): Promise<SalesEnquiry | null>;
 }

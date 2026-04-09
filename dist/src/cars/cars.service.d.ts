@@ -14,4 +14,5 @@ export declare class CarsService implements OnModuleInit {
     findOne(id: number): Promise<Car | null>;
     create(createCarDto: Partial<Car>): Promise<Car>;
     update(id: number, updateCarDto: Partial<Car>): Promise<Car | null>;
+    remove(id: number): Promise<void>;
 }

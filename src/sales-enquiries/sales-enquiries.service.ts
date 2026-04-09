@@ -25,8 +25,8 @@ export class SalesEnquiriesService {
     return this.salesEnquiryRepository.findOneBy({ id });
   }
 
-  async updateSelectedCar(id: number, selectedCar: string): Promise<SalesEnquiry | null> {
-    await this.salesEnquiryRepository.update(id, { selectedCar });
+  async updateCarSelection(id: number, selectedCar: string, car_id: number): Promise<SalesEnquiry | null> {
+    await this.salesEnquiryRepository.update(id, { selectedCar, car_id });
     return this.salesEnquiryRepository.findOneBy({ id });
   }
 

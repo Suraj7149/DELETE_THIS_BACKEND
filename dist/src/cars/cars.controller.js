@@ -24,7 +24,7 @@ let CarsController = class CarsController {
         this.carsService = carsService;
         this.awsS3Service = awsS3Service;
     }
-    findAll(page = 1, limit = 8, search) {
+    findAll(page = 1, limit = 100, search) {
         return this.carsService.findAll(+page, +limit, search);
     }
     findOne(id) {
@@ -42,6 +42,9 @@ let CarsController = class CarsController {
     }
     update(id, updateCarDto) {
         return this.carsService.update(+id, updateCarDto);
+    }
+    remove(id) {
+        return this.carsService.remove(+id);
     }
 };
 exports.CarsController = CarsController;
@@ -63,7 +66,17 @@ __decorate([
 ], CarsController.prototype, "findOne", null);
 __decorate([
     (0, common_1.Post)('upload'),
-    (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('image')),
+    (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('image', {
+        limits: {
+            fileSize: 6 * 1024 * 1024,
+        },
+        fileFilter: (req, file, cb) => {
+            if (!file.mimetype.match(/\/(jpg|jpeg|png|webp)$/)) {
+                return cb(new common_1.BadRequestException('Only image files (jpg, jpeg, png, webp) are allowed!'), false);
+            }
+            cb(null, true);
+        },
+    })),
     __param(0, (0, common_1.UploadedFile)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
@@ -84,6 +97,13 @@ __decorate([
     __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", void 0)
 ], CarsController.prototype, "update", null);
+__decorate([
+    (0, common_1.Delete)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], CarsController.prototype, "remove", null);
 exports.CarsController = CarsController = __decorate([
     (0, common_1.Controller)('cars'),
     __metadata("design:paramtypes", [cars_service_1.CarsService,

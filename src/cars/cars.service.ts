@@ -307,7 +307,7 @@ export class CarsService implements OnModuleInit {
     console.log('Database synchronization complete.');
   }
 
-  async findAll(page: number = 1, limit: number = 8, search?: string): Promise<{ data: Car[], total: number, page: number, lastPage: number }> {
+  async findAll(page: number = 1, limit: number = 100, search?: string): Promise<{ data: Car[], total: number, page: number, lastPage: number }> {
     let whereCondition: any = {};
     if (search) {
       whereCondition = [
@@ -343,5 +343,9 @@ export class CarsService implements OnModuleInit {
   async update(id: number, updateCarDto: Partial<Car>): Promise<Car | null> {
     await this.carsRepository.update(id, updateCarDto);
     return this.findOne(id);
+  }
+  
+  async remove(id: number): Promise<void> {
+    await this.carsRepository.delete(id);
   }
 }

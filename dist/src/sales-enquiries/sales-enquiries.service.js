@@ -34,8 +34,8 @@ let SalesEnquiriesService = class SalesEnquiriesService {
     async findOne(id) {
         return this.salesEnquiryRepository.findOneBy({ id });
     }
-    async updateSelectedCar(id, selectedCar) {
-        await this.salesEnquiryRepository.update(id, { selectedCar });
+    async updateCarSelection(id, selectedCar, car_id) {
+        await this.salesEnquiryRepository.update(id, { selectedCar, car_id });
         return this.salesEnquiryRepository.findOneBy({ id });
     }
     async updateStatus(id, status) {

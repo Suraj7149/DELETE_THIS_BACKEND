@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param, Query, UseInterceptors, UploadedFile, BadRequestException, Patch } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Query, UseInterceptors, UploadedFile, BadRequestException, Patch, Delete } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { CarsService } from './cars.service';
 import { AwsS3Service } from './aws-s3.service';
@@ -13,7 +13,7 @@ export class CarsController {
   @Get()
   findAll(
     @Query('page') page: number = 1,
-    @Query('limit') limit: number = 8,
+    @Query('limit') limit: number = 100,
     @Query('search') search?: string,
   ) {
     return this.carsService.findAll(+page, +limit, search);
@@ -25,7 +25,17 @@ export class CarsController {
   }
 
   @Post('upload')
-  @UseInterceptors(FileInterceptor('image'))
+  @UseInterceptors(FileInterceptor('image', {
+    limits: {
+      fileSize: 6 * 1024 * 1024, // 6MB
+    },
+    fileFilter: (req, file, cb) => {
+      if (!file.mimetype.match(/\/(jpg|jpeg|png|webp)$/)) {
+        return cb(new BadRequestException('Only image files (jpg, jpeg, png, webp) are allowed!'), false);
+      }
+      cb(null, true);
+    },
+  }))
   async uploadImage(@UploadedFile() file: Express.Multer.File) {
     if (!file) {
       throw new BadRequestException('No image file provided');
@@ -42,5 +52,10 @@ export class CarsController {
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateCarDto: any) {
     return this.carsService.update(+id, updateCarDto);
+  }
+
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.carsService.remove(+id);
   }
 }

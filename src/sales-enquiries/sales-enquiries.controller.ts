@@ -22,11 +22,12 @@ export class SalesEnquiriesController {
   }
 
   @Patch(':id/select-car')
-  updateSelectedCar(
+  updateCarSelection(
     @Param('id') id: string,
     @Body('selectedCar') selectedCar: string,
+    @Body('car_id') car_id: number,
   ) {
-    return this.salesEnquiriesService.updateSelectedCar(+id, selectedCar);
+    return this.salesEnquiriesService.updateCarSelection(+id, selectedCar, car_id);
   }
 
   @Patch(':id/status')

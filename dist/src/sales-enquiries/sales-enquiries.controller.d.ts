@@ -6,6 +6,6 @@ export declare class SalesEnquiriesController {
     create(payload: Partial<SalesEnquiry>): Promise<SalesEnquiry>;
     findAll(): Promise<SalesEnquiry[]>;
     findOne(id: string): Promise<SalesEnquiry | null>;
-    updateSelectedCar(id: string, selectedCar: string): Promise<SalesEnquiry | null>;
+    updateCarSelection(id: string, selectedCar: string, car_id: number): Promise<SalesEnquiry | null>;
     updateStatus(id: string, status: string): Promise<SalesEnquiry | null>;
 }

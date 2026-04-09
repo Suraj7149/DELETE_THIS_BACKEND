@@ -29,8 +29,8 @@ let SalesEnquiriesController = class SalesEnquiriesController {
     findOne(id) {
         return this.salesEnquiriesService.findOne(+id);
     }
-    updateSelectedCar(id, selectedCar) {
-        return this.salesEnquiriesService.updateSelectedCar(+id, selectedCar);
+    updateCarSelection(id, selectedCar, car_id) {
+        return this.salesEnquiriesService.updateCarSelection(+id, selectedCar, car_id);
     }
     updateStatus(id, status) {
         return this.salesEnquiriesService.updateStatus(+id, status);
@@ -61,10 +61,11 @@ __decorate([
     (0, common_1.Patch)(':id/select-car'),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)('selectedCar')),
+    __param(2, (0, common_1.Body)('car_id')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, String]),
+    __metadata("design:paramtypes", [String, String, Number]),
     __metadata("design:returntype", void 0)
-], SalesEnquiriesController.prototype, "updateSelectedCar", null);
+], SalesEnquiriesController.prototype, "updateCarSelection", null);
 __decorate([
     (0, common_1.Patch)(':id/status'),
     __param(0, (0, common_1.Param)('id')),

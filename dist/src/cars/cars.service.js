@@ -314,7 +314,7 @@ let CarsService = class CarsService {
         }
         console.log('Database synchronization complete.');
     }
-    async findAll(page = 1, limit = 8, search) {
+    async findAll(page = 1, limit = 100, search) {
         let whereCondition = {};
         if (search) {
             whereCondition = [
@@ -346,6 +346,9 @@ let CarsService = class CarsService {
     async update(id, updateCarDto) {
         await this.carsRepository.update(id, updateCarDto);
         return this.findOne(id);
+    }
+    async remove(id) {
+        await this.carsRepository.delete(id);
     }
 };
 exports.CarsService = CarsService;
