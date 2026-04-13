@@ -21,6 +21,7 @@ exports.CarsModule = CarsModule = __decorate([
         imports: [typeorm_1.TypeOrmModule.forFeature([car_entity_1.Car])],
         controllers: [cars_controller_1.CarsController],
         providers: [cars_service_1.CarsService, aws_s3_service_1.AwsS3Service],
+        exports: [aws_s3_service_1.AwsS3Service],
     })
 ], CarsModule);
 //# sourceMappingURL=cars.module.js.map

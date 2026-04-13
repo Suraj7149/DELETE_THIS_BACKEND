@@ -10,5 +10,6 @@ import { AwsS3Service } from './aws-s3.service';
   imports: [TypeOrmModule.forFeature([Car])],
   controllers: [CarsController],
   providers: [CarsService, AwsS3Service],
+  exports: [AwsS3Service],
 })
 export class CarsModule {}

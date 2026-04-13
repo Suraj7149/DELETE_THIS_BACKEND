@@ -9,5 +9,11 @@ export declare class DestinationsService implements OnModuleInit {
     onModuleInit(): Promise<void>;
     seed(): Promise<void>;
     findAllDestinations(): Promise<Destination[]>;
+    create(data: Partial<Destination>): Promise<Destination>;
+    update(id: number, data: Partial<Destination>): Promise<Destination | null>;
+    remove(id: number): Promise<void>;
     findAllPopularDestinations(): Promise<PopularDestination[]>;
+    createPopularRoute(route_name: string): Promise<PopularDestination>;
+    updatePopularRoute(id: number, route_name: string): Promise<PopularDestination | null>;
+    removePopularRoute(id: number): Promise<void>;
 }

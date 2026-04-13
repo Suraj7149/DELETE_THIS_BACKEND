@@ -48,6 +48,7 @@ const config_1 = require("@nestjs/config");
 const client_s3_1 = require("@aws-sdk/client-s3");
 const uuid_1 = require("uuid");
 const path = __importStar(require("path"));
+const fs = __importStar(require("fs"));
 let AwsS3Service = class AwsS3Service {
     configService;
     s3Client;
@@ -70,9 +71,9 @@ let AwsS3Service = class AwsS3Service {
         }
         this.s3Client = new client_s3_1.S3Client(s3Config);
     }
-    async uploadFile(file) {
+    async uploadFile(file, folder = 'cars') {
         const ext = path.extname(file.originalname);
-        const uniqueFilename = `cars/${(0, uuid_1.v4)()}${ext}`;
+        const uniqueFilename = `${folder}/${(0, uuid_1.v4)()}${ext}`;
         const accessKeyId = this.configService.get('AWS_ACCESS_KEY_ID');
         const secretAccessKey = this.configService.get('AWS_SECRET_ACCESS_KEY');
         if (accessKeyId && secretAccessKey) {
@@ -93,14 +94,14 @@ let AwsS3Service = class AwsS3Service {
         }
         else {
             try {
-                const fs = require('fs');
-                const uploadDir = path.join(process.cwd(), '..', 'car-rental', 'public', 'assets', 'cars');
-                const filePath = path.join(uploadDir, `${uniqueFilename.split('/')[1]}`);
+                const uploadDir = path.join(process.cwd(), '..', 'car-rental', 'public', 'assets', ...folder.split('/'));
+                const filename = `${(0, uuid_1.v4)()}${path.extname(file.originalname)}`;
+                const filePath = path.join(uploadDir, filename);
                 if (!fs.existsSync(uploadDir)) {
                     fs.mkdirSync(uploadDir, { recursive: true });
                 }
                 fs.writeFileSync(filePath, file.buffer);
-                return `/assets/cars/${uniqueFilename.split('/')[1]}`;
+                return `/assets/${folder}/${filename}`;
             }
             catch (error) {
                 console.error('Error saving file locally:', error);

@@ -7,4 +7,7 @@ export declare class LocationsService implements OnModuleInit {
     onModuleInit(): Promise<void>;
     seed(): Promise<void>;
     findAll(): Promise<Location[]>;
+    create(name: string): Promise<Location>;
+    update(id: number, name: string): Promise<Location | null>;
+    remove(id: number): Promise<void>;
 }

@@ -3,6 +3,7 @@ import { ConfigService } from '@nestjs/config';
 import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 import { v4 as uuidv4 } from 'uuid';
 import * as path from 'path';
+import * as fs from 'fs';
 
 @Injectable()
 export class AwsS3Service {
@@ -31,9 +32,9 @@ export class AwsS3Service {
     this.s3Client = new S3Client(s3Config);
   }
 
-  async uploadFile(file: Express.Multer.File): Promise<string> {
+  async uploadFile(file: Express.Multer.File, folder: string = 'cars'): Promise<string> {
     const ext = path.extname(file.originalname);
-    const uniqueFilename = `cars/${uuidv4()}${ext}`;
+    const uniqueFilename = `${folder}/${uuidv4()}${ext}`;
 
     const accessKeyId = this.configService.get<string>('AWS_ACCESS_KEY_ID');
     const secretAccessKey = this.configService.get<string>('AWS_SECRET_ACCESS_KEY');
@@ -57,22 +58,22 @@ export class AwsS3Service {
     } else {
       // Local Fallback: Save directly to the Next.js frontend's public directory
       try {
-        const fs = require('fs');
-        
         // Define path to the NextJS public directory
-        const uploadDir = path.join(process.cwd(), '..', 'car-rental', 'public', 'assets', 'cars');
-        const filePath = path.join(uploadDir, `${uniqueFilename.split('/')[1]}`);
+        // folder can be nested like 'new-york/images', so we map it cleanly
+        const uploadDir = path.join(process.cwd(), '..', 'car-rental', 'public', 'assets', ...folder.split('/'));
+        const filename = `${uuidv4()}${path.extname(file.originalname)}`;
+        const filePath = path.join(uploadDir, filename);
 
-        // Ensure directory exists
+        // Ensure directory exists (recursive handles nested paths)
         if (!fs.existsSync(uploadDir)) {
           fs.mkdirSync(uploadDir, { recursive: true });
         }
 
         // Write the file
         fs.writeFileSync(filePath, file.buffer);
-        
+
         // Return the relative public path that Next.js will serve automatically
-        return `/assets/cars/${uniqueFilename.split('/')[1]}`;
+        return `/assets/${folder}/${filename}`;
       } catch (error) {
         console.error('Error saving file locally:', error);
         throw new InternalServerErrorException('Failed to save image locally');

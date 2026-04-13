@@ -12,58 +12,58 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LocationsController = void 0;
+exports.CabsRentalCardController = void 0;
 const common_1 = require("@nestjs/common");
-const locations_service_1 = require("./locations.service");
-let LocationsController = class LocationsController {
-    locationsService;
-    constructor(locationsService) {
-        this.locationsService = locationsService;
+const cabs_rental_card_service_1 = require("./cabs-rental-card.service");
+let CabsRentalCardController = class CabsRentalCardController {
+    cabsRentalCardService;
+    constructor(cabsRentalCardService) {
+        this.cabsRentalCardService = cabsRentalCardService;
     }
     findAll() {
-        return this.locationsService.findAll();
+        return this.cabsRentalCardService.findAll();
     }
-    create(name) {
-        return this.locationsService.create(name);
+    create(data) {
+        return this.cabsRentalCardService.create(data);
     }
-    update(id, name) {
-        return this.locationsService.update(+id, name);
+    update(id, data) {
+        return this.cabsRentalCardService.update(+id, data);
     }
     remove(id) {
-        return this.locationsService.remove(+id);
+        return this.cabsRentalCardService.remove(+id);
     }
 };
-exports.LocationsController = LocationsController;
+exports.CabsRentalCardController = CabsRentalCardController;
 __decorate([
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
-], LocationsController.prototype, "findAll", null);
+], CabsRentalCardController.prototype, "findAll", null);
 __decorate([
     (0, common_1.Post)(),
-    __param(0, (0, common_1.Body)('name')),
+    __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
-], LocationsController.prototype, "create", null);
+], CabsRentalCardController.prototype, "create", null);
 __decorate([
     (0, common_1.Patch)(':id'),
     __param(0, (0, common_1.Param)('id')),
-    __param(1, (0, common_1.Body)('name')),
+    __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, String]),
+    __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", void 0)
-], LocationsController.prototype, "update", null);
+], CabsRentalCardController.prototype, "update", null);
 __decorate([
     (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
-], LocationsController.prototype, "remove", null);
-exports.LocationsController = LocationsController = __decorate([
-    (0, common_1.Controller)('locations'),
-    __metadata("design:paramtypes", [locations_service_1.LocationsService])
-], LocationsController);
-//# sourceMappingURL=locations.controller.js.map
+], CabsRentalCardController.prototype, "remove", null);
+exports.CabsRentalCardController = CabsRentalCardController = __decorate([
+    (0, common_1.Controller)('cabs-rental-cards'),
+    __metadata("design:paramtypes", [cabs_rental_card_service_1.CabsRentalCardService])
+], CabsRentalCardController);
+//# sourceMappingURL=cabs-rental-card.controller.js.map

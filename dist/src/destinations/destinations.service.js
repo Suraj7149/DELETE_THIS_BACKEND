@@ -80,8 +80,30 @@ let DestinationsService = class DestinationsService {
     findAllDestinations() {
         return this.destinationsRepository.find();
     }
+    async create(data) {
+        const destination = this.destinationsRepository.create(data);
+        return this.destinationsRepository.save(destination);
+    }
+    async update(id, data) {
+        await this.destinationsRepository.update(id, data);
+        return this.destinationsRepository.findOne({ where: { destinations_id: id } });
+    }
+    async remove(id) {
+        await this.destinationsRepository.delete(id);
+    }
     findAllPopularDestinations() {
         return this.popularDestinationsRepository.find();
+    }
+    async createPopularRoute(route_name) {
+        const route = this.popularDestinationsRepository.create({ route_name });
+        return this.popularDestinationsRepository.save(route);
+    }
+    async updatePopularRoute(id, route_name) {
+        await this.popularDestinationsRepository.update(id, { route_name });
+        return this.popularDestinationsRepository.findOne({ where: { id } });
+    }
+    async removePopularRoute(id) {
+        await this.popularDestinationsRepository.delete(id);
     }
 };
 exports.DestinationsService = DestinationsService;

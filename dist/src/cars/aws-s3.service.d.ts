@@ -5,5 +5,5 @@ export declare class AwsS3Service {
     private readonly bucketName;
     private readonly region;
     constructor(configService: ConfigService);
-    uploadFile(file: Express.Multer.File): Promise<string>;
+    uploadFile(file: Express.Multer.File, folder?: string): Promise<string>;
 }

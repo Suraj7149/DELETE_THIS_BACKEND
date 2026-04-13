@@ -41,4 +41,18 @@ export class LocationsService implements OnModuleInit {
       order: { name: 'ASC' },
     });
   }
+
+  async create(name: string): Promise<Location> {
+    const location = this.locationRepository.create({ name });
+    return this.locationRepository.save(location);
+  }
+
+  async update(id: number, name: string): Promise<Location | null> {
+    await this.locationRepository.update(id, { name });
+    return this.locationRepository.findOne({ where: { id } });
+  }
+
+  async remove(id: number): Promise<void> {
+    await this.locationRepository.delete(id);
+  }
 }

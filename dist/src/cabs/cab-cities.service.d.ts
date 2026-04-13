@@ -8,4 +8,7 @@ export declare class CabCitiesService implements OnModuleInit {
     seed(): Promise<void>;
     findBySlug(slug: string): Promise<CabCity | null>;
     findAll(): Promise<CabCity[]>;
+    create(data: Partial<CabCity>): Promise<CabCity>;
+    update(id: number, data: Partial<CabCity>): Promise<CabCity | null>;
+    remove(id: number): Promise<void>;
 }

@@ -13,12 +13,16 @@ const destinations_service_1 = require("./destinations.service");
 const destinations_controller_1 = require("./destinations.controller");
 const destination_entity_1 = require("./entities/destination.entity");
 const popular_destination_entity_1 = require("./entities/popular-destination.entity");
+const cars_module_1 = require("../cars/cars.module");
 let DestinationsModule = class DestinationsModule {
 };
 exports.DestinationsModule = DestinationsModule;
 exports.DestinationsModule = DestinationsModule = __decorate([
     (0, common_1.Module)({
-        imports: [typeorm_1.TypeOrmModule.forFeature([destination_entity_1.Destination, popular_destination_entity_1.PopularDestination])],
+        imports: [
+            typeorm_1.TypeOrmModule.forFeature([destination_entity_1.Destination, popular_destination_entity_1.PopularDestination]),
+            cars_module_1.CarsModule
+        ],
         controllers: [destinations_controller_1.DestinationsController],
         providers: [destinations_service_1.DestinationsService],
         exports: [destinations_service_1.DestinationsService],

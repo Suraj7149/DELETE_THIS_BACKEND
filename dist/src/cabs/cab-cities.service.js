@@ -110,6 +110,17 @@ let CabCitiesService = class CabCitiesService {
     async findAll() {
         return this.cabCityRepository.find();
     }
+    async create(data) {
+        const city = this.cabCityRepository.create(data);
+        return this.cabCityRepository.save(city);
+    }
+    async update(id, data) {
+        await this.cabCityRepository.update(id, data);
+        return this.cabCityRepository.findOne({ where: { id } });
+    }
+    async remove(id) {
+        await this.cabCityRepository.delete(id);
+    }
 };
 exports.CabCitiesService = CabCitiesService;
 exports.CabCitiesService = CabCitiesService = __decorate([

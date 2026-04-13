@@ -104,4 +104,18 @@ export class CabCitiesService implements OnModuleInit {
   async findAll(): Promise<CabCity[]> {
     return this.cabCityRepository.find();
   }
+
+  async create(data: Partial<CabCity>): Promise<CabCity> {
+    const city = this.cabCityRepository.create(data);
+    return this.cabCityRepository.save(city);
+  }
+
+  async update(id: number, data: Partial<CabCity>): Promise<CabCity | null> {
+    await this.cabCityRepository.update(id, data);
+    return this.cabCityRepository.findOne({ where: { id } });
+  }
+
+  async remove(id: number): Promise<void> {
+    await this.cabCityRepository.delete(id);
+  }
 }

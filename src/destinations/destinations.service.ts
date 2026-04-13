@@ -73,7 +73,35 @@ export class DestinationsService implements OnModuleInit {
     return this.destinationsRepository.find();
   }
 
+  async create(data: Partial<Destination>) {
+    const destination = this.destinationsRepository.create(data);
+    return this.destinationsRepository.save(destination);
+  }
+
+  async update(id: number, data: Partial<Destination>) {
+    await this.destinationsRepository.update(id, data);
+    return this.destinationsRepository.findOne({ where: { destinations_id: id } });
+  }
+
+  async remove(id: number) {
+    await this.destinationsRepository.delete(id);
+  }
+
   findAllPopularDestinations() {
     return this.popularDestinationsRepository.find();
+  }
+
+  async createPopularRoute(route_name: string) {
+    const route = this.popularDestinationsRepository.create({ route_name });
+    return this.popularDestinationsRepository.save(route);
+  }
+
+  async updatePopularRoute(id: number, route_name: string) {
+    await this.popularDestinationsRepository.update(id, { route_name });
+    return this.popularDestinationsRepository.findOne({ where: { id } });
+  }
+
+  async removePopularRoute(id: number) {
+    await this.popularDestinationsRepository.delete(id);
   }
 }

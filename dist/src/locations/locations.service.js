@@ -50,6 +50,17 @@ let LocationsService = class LocationsService {
             order: { name: 'ASC' },
         });
     }
+    async create(name) {
+        const location = this.locationRepository.create({ name });
+        return this.locationRepository.save(location);
+    }
+    async update(id, name) {
+        await this.locationRepository.update(id, { name });
+        return this.locationRepository.findOne({ where: { id } });
+    }
+    async remove(id) {
+        await this.locationRepository.delete(id);
+    }
 };
 exports.LocationsService = LocationsService;
 exports.LocationsService = LocationsService = __decorate([
