@@ -301,27 +301,106 @@ let CarsService = class CarsService {
                 wheels: "18-inch",
                 sellingPrice: 60000,
                 ownership: "new"
+            },
+            {
+                name: "Tesla Model 3",
+                image: "/assets/electric_car.png",
+                category: "ELECTRIC",
+                rating: 4.9,
+                reviews: 180,
+                seats: 5,
+                doors: 4,
+                bags: 2,
+                transmission: "Automatic",
+                mileage: "Unlimited",
+                fuel: "Electric",
+                features: ["Autopilot", "Supercharging"],
+                pricePerDay: 85.00,
+                brand: "Tesla",
+                yearModel: "2023",
+                fuelType: "Electric",
+                ownership: "new"
+            },
+            {
+                name: "Nissan Altima",
+                image: "/assets/standard.png",
+                category: "LUXURY",
+                rating: 4.6,
+                reviews: 95,
+                seats: 5,
+                doors: 4,
+                bags: 3,
+                transmission: "Automatic",
+                mileage: "Unlimited",
+                fuel: "Petrol",
+                features: ["ProPilot", "Zero Gravity Seats"],
+                pricePerDay: 45.00,
+                brand: "Nissan",
+                yearModel: "2023",
+                fuelType: "Petrol",
+                ownership: "new"
+            },
+            {
+                name: "Kia Stinger",
+                image: "/assets/image-61.png",
+                category: "SPORTS",
+                rating: 4.8,
+                reviews: 120,
+                seats: 5,
+                doors: 4,
+                bags: 2,
+                transmission: "Automatic",
+                mileage: "Unlimited",
+                fuel: "Petrol",
+                features: ["Brembo Brakes", "Heads-up Display"],
+                pricePerDay: 75.00,
+                brand: "Kia",
+                yearModel: "2023",
+                fuelType: "Petrol",
+                ownership: "new"
+            },
+            {
+                name: "Hyundai Palisade",
+                image: "/assets/Chrysler_Pacifica.png",
+                category: "SUV",
+                rating: 4.9,
+                reviews: 210,
+                seats: 7,
+                doors: 4,
+                bags: 4,
+                transmission: "Automatic",
+                mileage: "Unlimited",
+                fuel: "Petrol",
+                features: ["H-Tex Seating", "Navigation-based CC"],
+                pricePerDay: 88.00,
+                brand: "Hyundai",
+                yearModel: "2024",
+                fuelType: "Petrol",
+                ownership: "new"
             }
         ];
         for (const carData of initialCars) {
-            const existingCar = cars.find(c => c.name === carData.name);
-            if (existingCar) {
-                await this.carsRepository.update(existingCar.car_id, carData);
-            }
-            else {
+            const existingCar = await this.carsRepository.findOne({ where: { name: carData.name } });
+            if (!existingCar) {
                 await this.carsRepository.save(carData);
             }
         }
         console.log('Database synchronization complete.');
     }
-    async findAll(page = 1, limit = 100, search) {
+    async findAll(page = 1, limit = 100, search, brand) {
         let whereCondition = {};
+        if (brand) {
+            whereCondition.brand = (0, typeorm_2.Like)(`%${brand}%`);
+        }
         if (search) {
-            whereCondition = [
-                { brand: (0, typeorm_2.Like)(`%${search}%`) },
+            const searchConditions = [
                 { name: (0, typeorm_2.Like)(`%${search}%`) },
                 { category: (0, typeorm_2.Like)(`%${search}%`) },
             ];
+            if (brand) {
+                searchConditions.forEach(cond => cond['brand'] = (0, typeorm_2.Like)(`%${brand}%`));
+            }
+            whereCondition = searchConditions;
         }
         const [data, total] = await this.carsRepository.findAndCount({
             where: whereCondition,
@@ -336,6 +415,7 @@ let CarsService = class CarsService {
             lastPage: Math.ceil(total / limit),
         };
     }
+    旋;
     findOne(id) {
         return this.carsRepository.findOne({ where: { car_id: id } });
     }

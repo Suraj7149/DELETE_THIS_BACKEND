@@ -24,9 +24,10 @@ let CarsController = class CarsController {
         this.carsService = carsService;
         this.awsS3Service = awsS3Service;
     }
-    findAll(page = 1, limit = 100, search) {
-        return this.carsService.findAll(+page, +limit, search);
+    findAll(page = 1, limit = 100, search, brand) {
+        return this.carsService.findAll(+page, +limit, search, brand);
     }
+    旋;
     findOne(id) {
         return this.carsService.findOne(+id);
     }
@@ -53,8 +54,9 @@ __decorate([
     __param(0, (0, common_1.Query)('page')),
     __param(1, (0, common_1.Query)('limit')),
     __param(2, (0, common_1.Query)('search')),
+    __param(3, (0, common_1.Query)('brand')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number, Number, String]),
+    __metadata("design:paramtypes", [Number, Number, String, String]),
     __metadata("design:returntype", void 0)
 ], CarsController.prototype, "findAll", null);
 __decorate([

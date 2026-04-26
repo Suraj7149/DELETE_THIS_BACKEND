@@ -268,6 +268,7 @@ export class CarsService implements OnModuleInit {
         sellingPrice: 50000,
         ownership: "new"
       },
+  // ... (previous cars)
       {
         name: "Mercedes C-Class",
         image: "/assets/BMW_5.png",
@@ -291,30 +292,114 @@ export class CarsService implements OnModuleInit {
         wheels: "18-inch",
         sellingPrice: 60000,
         ownership: "new"
+      },
+      {
+        name: "Tesla Model 3",
+        image: "/assets/electric_car.png",
+        category: "ELECTRIC",
+        rating: 4.9,
+        reviews: 180,
+        seats: 5,
+        doors: 4,
+        bags: 2,
+        transmission: "Automatic",
+        mileage: "Unlimited",
+        fuel: "Electric",
+        features: ["Autopilot", "Supercharging"],
+        pricePerDay: 85.00,
+        brand: "Tesla",
+        yearModel: "2023",
+        fuelType: "Electric",
+        ownership: "new"
+      },
+      {
+        name: "Nissan Altima",
+        image: "/assets/standard.png",
+        category: "LUXURY",
+        rating: 4.6,
+        reviews: 95,
+        seats: 5,
+        doors: 4,
+        bags: 3,
+        transmission: "Automatic",
+        mileage: "Unlimited",
+        fuel: "Petrol",
+        features: ["ProPilot", "Zero Gravity Seats"],
+        pricePerDay: 45.00,
+        brand: "Nissan",
+        yearModel: "2023",
+        fuelType: "Petrol",
+        ownership: "new"
+      },
+      {
+        name: "Kia Stinger",
+        image: "/assets/image-61.png",
+        category: "SPORTS",
+        rating: 4.8,
+        reviews: 120,
+        seats: 5,
+        doors: 4,
+        bags: 2,
+        transmission: "Automatic",
+        mileage: "Unlimited",
+        fuel: "Petrol",
+        features: ["Brembo Brakes", "Heads-up Display"],
+        pricePerDay: 75.00,
+        brand: "Kia",
+        yearModel: "2023",
+        fuelType: "Petrol",
+        ownership: "new"
+      },
+      {
+        name: "Hyundai Palisade",
+        image: "/assets/Chrysler_Pacifica.png",
+        category: "SUV",
+        rating: 4.9,
+        reviews: 210,
+        seats: 7,
+        doors: 4,
+        bags: 4,
+        transmission: "Automatic",
+        mileage: "Unlimited",
+        fuel: "Petrol",
+        features: ["H-Tex Seating", "Navigation-based CC"],
+        pricePerDay: 88.00,
+        brand: "Hyundai",
+        yearModel: "2024",
+        fuelType: "Petrol",
+        ownership: "new"
       }
     ];
 
     for (const carData of initialCars) {
-      const existingCar = cars.find(c => c.name === carData.name);
-      if (existingCar) {
-        // Update only missing fields to satisfy "do not update current columns" 
-        // while also fulfilling "update it with the new columns"
-        await this.carsRepository.update(existingCar.car_id, carData);
-      } else {
+      const existingCar = await this.carsRepository.findOne({ where: { name: carData.name } });
+      if (!existingCar) {
         await this.carsRepository.save(carData);
       }
     }
     console.log('Database synchronization complete.');
   }
 
-  async findAll(page: number = 1, limit: number = 100, search?: string): Promise<{ data: Car[], total: number, page: number, lastPage: number }> {
+  async findAll(page: number = 1, limit: number = 100, search?: string, brand?: string): Promise<{ data: Car[], total: number, page: number, lastPage: number }> {
     let whereCondition: any = {};
+    
+    if (brand) {
+      whereCondition.brand = Like(`%${brand}%`);
+    }
+
     if (search) {
-      whereCondition = [
-        { brand: Like(`%${search}%`) },
+      // If search is also provided, we use an array for OR conditions in TypeORM
+      // But we still want to respect the brand filter if it exists
+      const searchConditions = [
         { name: Like(`%${search}%`) },
         { category: Like(`%${search}%`) },
       ];
+      
+      if (brand) {
+        searchConditions.forEach(cond => cond['brand'] = Like(`%${brand}%`));
+      }
+      
+      whereCondition = searchConditions;
     }
 
     const [data, total] = await this.carsRepository.findAndCount({
@@ -330,6 +415,7 @@ export class CarsService implements OnModuleInit {
       lastPage: Math.ceil(total / limit),
     };
   }
+旋
 
   findOne(id: number): Promise<Car | null> {
     return this.carsRepository.findOne({ where: { car_id: id } });

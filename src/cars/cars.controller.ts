@@ -15,9 +15,11 @@ export class CarsController {
     @Query('page') page: number = 1,
     @Query('limit') limit: number = 100,
     @Query('search') search?: string,
+    @Query('brand') brand?: string,
   ) {
-    return this.carsService.findAll(+page, +limit, search);
+    return this.carsService.findAll(+page, +limit, search, brand);
   }
+旋
 
   @Get(':id')
   findOne(@Param('id') id: string) {
