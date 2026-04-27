@@ -11,6 +11,9 @@ import { DestinationsModule } from './destinations/destinations.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { BlogsModule } from './blogs/blogs.module';
+import { SocialMediaModule } from './social-media/social-media.module';
+import { ContactSubmissionsModule } from './contact-submissions/contact-submissions.module';
 
 @Module({
   imports: [
@@ -40,6 +43,9 @@ import { DashboardModule } from './dashboard/dashboard.module';
     AuthModule,
     UsersModule,
     DashboardModule,
+    BlogsModule,
+    SocialMediaModule,
+    ContactSubmissionsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

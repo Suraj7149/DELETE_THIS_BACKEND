@@ -20,6 +20,9 @@ const destinations_module_1 = require("./destinations/destinations.module");
 const auth_module_1 = require("./auth/auth.module");
 const users_module_1 = require("./users/users.module");
 const dashboard_module_1 = require("./dashboard/dashboard.module");
+const blogs_module_1 = require("./blogs/blogs.module");
+const social_media_module_1 = require("./social-media/social-media.module");
+const contact_submissions_module_1 = require("./contact-submissions/contact-submissions.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -52,6 +55,9 @@ exports.AppModule = AppModule = __decorate([
             auth_module_1.AuthModule,
             users_module_1.UsersModule,
             dashboard_module_1.DashboardModule,
+            blogs_module_1.BlogsModule,
+            social_media_module_1.SocialMediaModule,
+            contact_submissions_module_1.ContactSubmissionsModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
